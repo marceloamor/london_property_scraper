@@ -22,10 +22,11 @@ all_price = [] # stores the listing price of apartment
 
 # Creating index
 index = 0
-TowerHamletsCode = "5E61417"
+TowerHamletsCode = "5E61417"   #important!!!! replace with target area in london, visible in Rightmove's URL
+
 for pages in range(41):
 
-    # define our user headers
+    # define user headers
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36"
         }
@@ -43,13 +44,12 @@ res = requests.get(rightmove, headers=headers)
 # check status
 res.raise_for_status()
 
-soup = BeautifulSoup(res.text, "html.parser")
+soup = BeautifulSoup(res.text, "html.parser") #save HTML soup for parsing
+
+### Let the scraping begin!!!
 
 
-### Let the scraping begin! 
-
-
-# This gets the list of apartments
+# This gets the list of flats
 apartments = soup.find_all("div", class_="l-searchResult is-list")
 
 # This gets the number of listings
