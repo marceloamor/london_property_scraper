@@ -93,12 +93,6 @@ for i in range(len(apartments)):
     )
     price = re.sub("[^0-9]", "", price)
     all_price.append(price)
-    
-    # Code to count how many listings we have scraped already.
-    index = index + 24
-
-    if index >= number_of_listings:
-        break
 
 
 ## create usable data
