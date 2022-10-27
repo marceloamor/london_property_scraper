@@ -20,7 +20,7 @@ all_address = [] # stores address of apartment
 all_price = [] # stores the listing price of apartment
 
 
-# Creating index
+# Creating index and setting search location
 index = 0
 TowerHamletsCode = "5E61417"   #important!!!! replace with target area in london, visible in Rightmove's URL
 
@@ -94,7 +94,7 @@ for i in range(len(apartments)):
     price = re.sub("[^0-9]", "", price)
     all_price.append(price)
     
-    # Code to count how many listings we have scrapped already.
+    # Code to count how many listings we have scraped already.
     index = index + 24
 
     if index >= number_of_listings:
@@ -110,7 +110,8 @@ data = {
     "Price": all_price,
     }
 df = pd.DataFrame.from_dict(data)
-#df.to_csv(r"sales_data.csv", encoding="utf-8", header="true", index = False)
+
+df.to_csv(r"sales_data.csv", encoding="utf-8", header="true", index = False) #save scraped data in a csv
 
 print(df)
 
